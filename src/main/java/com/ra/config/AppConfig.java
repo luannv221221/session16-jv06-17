@@ -53,7 +53,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/session16_hibernate");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/session16_hibernate?createDatabaseIfNotExist=true");
         dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
@@ -67,6 +67,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         Properties properties = new Properties();
         properties.setProperty("hibernate.show_sql","true");
         properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL8Dialect");
+        properties.setProperty("hibernate.hbm2ddl.auto","update");
         sessionFactoryBean.setHibernateProperties(properties);
         return sessionFactoryBean;
     }

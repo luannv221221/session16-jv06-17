@@ -42,14 +42,33 @@
         </form>
     </div>
 </nav>
-<div class="jumbotron">
-    <h1 class="display-3">HOME PAGE</h1>
-    <p class="lead" th:text="${fullName}"></p>
-    <hr class="my-2">
-    <p>More info</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-    </p>
+<div class="container">
+    <h1>Danh sách danh mục</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="category,iStat :${categories}">
+            <td scope="row" th:text="${iStat.count}"></td>
+            <td th:text="${category.categoryName}"></td>
+            <td th:text="${category.description}"></td>
+            <td th:text="${category.status ? 'Active':'Inactive'}"></td>
+            <td>
+                <a class="btn btn-primary">Edit</a>
+                <a class="btn btn-danger">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
