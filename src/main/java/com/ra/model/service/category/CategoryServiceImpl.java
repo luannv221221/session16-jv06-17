@@ -18,7 +18,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public boolean create(Category category) {
-        return false;
+        return categoryDAO.create(category);
     }
 
     @Override

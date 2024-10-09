@@ -28,6 +28,18 @@ public class CategoryDAOImpl implements CategoryDAO{
 
     @Override
     public boolean create(Category category) {
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.save(category);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception exception){
+            exception.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return false;
     }
 
