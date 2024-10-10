@@ -37,11 +37,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    // Nếu rỗng thì trả vè fasle // có rồi trả về true
     public boolean checkNameExist(String name) {
         List<Category> categories = categoryDAO.findByName(name);
-        if(categories.size()>0){
-            return true;
-        }
-        return false;
+        // isEmpty() nếu rỗng trả về  true khác rỗng trar ve false
+        return !categories.isEmpty();
     }
 }

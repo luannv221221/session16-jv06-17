@@ -9,16 +9,13 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 @Component
 public class UniqueValidate implements ConstraintValidator<UniqueCategory,String> {
-    private final CategoryDAO categoryDAO;
+    private final CategoryService categoryService;
     @Autowired
-    public UniqueValidate(CategoryDAO categoryDAO) {
-        this.categoryDAO = categoryDAO;
+    public UniqueValidate(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null || value.isEmpty()) {
-            return true; // Allow null or empty values
-        }
-        return categoryDAO.findByName(value).isEmpty();
+        return !categoryService.checkNameExist(value);
     }
 }
