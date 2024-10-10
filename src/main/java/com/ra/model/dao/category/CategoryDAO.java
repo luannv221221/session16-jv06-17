@@ -10,4 +10,5 @@ public interface CategoryDAO {
     Category findById(int id);
     boolean update(Category category);
     void delete(int id);
+    List<Category> findByName(String name);
 }

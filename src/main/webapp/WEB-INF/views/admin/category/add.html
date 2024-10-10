@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <th:block th:insert="admin/layouts/head.html"></th:block>
 
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
-
     <th:block th:insert="admin/layouts/header.html"></th:block>
-
     <!-- =============================================== -->
-
     <!-- Left side column. contains the sidebar -->
     <th:block th:insert="admin/layouts/siderbar.html"></th:block>
-
     <!-- =============================================== -->
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
                 Quản lý menu trang giao diện
-
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -39,26 +34,27 @@
 
                     <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
-                        <form role="form" class="">
+                        <form role="form" class="" method="post" th:object="${category}">
                             <div class="box-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                <div class="form-group" th:class="${#fields.hasErrors('categoryName')} ? 'has-error'">
+                                    <label for="exampleInputEmail1">Tên danh mục</label>
+                                    <input type="text" class="form-control" th:field="*{categoryName}" id="exampleInputEmail1" placeholder="Enter email">
+                                    <span class="help-block" th:errors="*{categoryName}"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <label for="exampleInputPassword1">Mô tả</label>
+                                    <input type="password" class="form-control" th:field="*{description}" id="exampleInputPassword1" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
+                                    <label for="exampleInputEmail1">Trạng thái</label>
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name=""
-                                                   value="checkedValue"> Active
+                                            <input class="form-check-input" type="radio" th:field="*{status}"
+                                                   value="1"> Active
                                         </label>
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name=""
-                                                   value="checkedValue"> Inactive
+                                            <input class="form-check-input" type="radio" th:field="*{status}"
+                                                   value="0"> Inactive
                                         </label>
                                     </div>
 
@@ -87,7 +83,6 @@
     <!-- /.content-wrapper -->
 
     <th:block th:insert="admin/layouts/footer.html"></th:block>
-
 </div>
 <!-- ./wrapper -->
 

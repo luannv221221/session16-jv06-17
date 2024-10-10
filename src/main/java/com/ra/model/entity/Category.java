@@ -1,8 +1,11 @@
 package com.ra.model.entity;
 
+import com.ra.validate.UniqueCategory;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "categories")
@@ -12,7 +15,10 @@ public class Category {
     @Column(name = "id")
     private int id;
     @Column(name = "name",length = 100,unique = true,nullable = false)
+    @NotBlank(message = "Vui lòng nhập cái tên vào")
+    @UniqueCategory
     private String categoryName;
+    @NotBlank(message = "Vui nhập description")
     @Column(name = "description")
     private String description;
     @Column(name = "status")

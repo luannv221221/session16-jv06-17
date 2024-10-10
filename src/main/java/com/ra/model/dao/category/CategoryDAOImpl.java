@@ -57,4 +57,19 @@ public class CategoryDAOImpl implements CategoryDAO{
     public void delete(int id) {
 
     }
+    @Override
+    public List<Category> findByName(String name) {
+        List<Category> categories = new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        try{
+            String sql = "FROM Category c WHERE c.categoryName =:_name";
+            categories = session.createQuery(sql, Category.class).setParameter("_name",name).list();
+        }catch (Exception exception){
+            exception.printStackTrace();
+
+        } finally {
+            session.close();
+        }
+        return categories;
+    }
 }

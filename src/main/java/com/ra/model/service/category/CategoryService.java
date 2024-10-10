@@ -10,4 +10,5 @@ public interface CategoryService {
     Category findById(int id);
     boolean update(Category category);
     void delete(int id);
+    boolean checkNameExist(String name);
 }

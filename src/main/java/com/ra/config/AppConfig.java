@@ -7,7 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -69,10 +75,11 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         properties.setProperty("hibernate.show_sql","true");
         properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL8Dialect");
         properties.setProperty("hibernate.hbm2ddl.auto","update");
+        properties.setProperty("javax.persistence.validation.mode", "none");
+
         sessionFactoryBean.setHibernateProperties(properties);
         return sessionFactoryBean;
     }
-
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -84,4 +91,5 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         registry.addResourceHandler("/css/**","/fonts/**","/images/**","/js/**")
                 .addResourceLocations("classpath:assets/css/","classpath:assets/fonts/","classpath:assets/js/","classpath:assets/images/");
     }
+
 }

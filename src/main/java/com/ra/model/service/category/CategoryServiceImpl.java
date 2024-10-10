@@ -35,4 +35,13 @@ public class CategoryServiceImpl implements CategoryService {
     public void delete(int id) {
 
     }
+
+    @Override
+    public boolean checkNameExist(String name) {
+        List<Category> categories = categoryDAO.findByName(name);
+        if(categories.size()>0){
+            return true;
+        }
+        return false;
+    }
 }
