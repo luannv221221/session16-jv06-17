@@ -4,7 +4,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img th:src="@{images/user2-160x160.jpg}" class="img-circle" alt="User Image">
+                <img th:src="@{/images/user2-160x160.jpg}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>Alexander Pierce</p>
@@ -43,8 +43,8 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href=""><i class="fa fa-circle-o"></i> Thêm mới</a></li>
-                    <li><a href=""><i class="fa fa-circle-o"></i> Danh sách</a></li>
+                    <li><a th:href="@{/admin/product/add}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                    <li><a th:href="@{/admin/product}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
                 </ul>
             </li>
 

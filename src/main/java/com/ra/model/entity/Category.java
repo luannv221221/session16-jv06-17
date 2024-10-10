@@ -6,6 +6,7 @@ import org.hibernate.annotations.ColumnDefault;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "categories")
@@ -25,14 +26,17 @@ public class Category {
     @ColumnDefault("1")
     private boolean status;
 
+    @OneToMany(mappedBy = "category")
+    private Set<Product> products;
     public Category() {
     }
 
-    public Category(int id, String categoryName, String description, boolean status) {
+    public Category(int id, String categoryName, String description, boolean status, Set<Product> products) {
         this.id = id;
         this.categoryName = categoryName;
         this.description = description;
         this.status = status;
+        this.products = products;
     }
 
     public int getId() {
@@ -65,5 +69,13 @@ public class Category {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 }
