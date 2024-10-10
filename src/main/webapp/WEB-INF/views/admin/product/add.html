@@ -36,14 +36,15 @@
                     <div class="box-body table-responsive no-padding">
                         <form role="form" class="" method="post" enctype="multipart/form-data" th:object="${product}">
                             <div class="box-body">
-                                <div class="form-group" >
+                                <div class="form-group"  th:class="${#fields.hasErrors('productName')} ? 'has-error'">
                                     <label>Tên sản phẩm</label>
                                     <input type="text" class="form-control" th:field="*{productName}">
-                                    <span class="help-block" ></span>
+                                    <span class="help-block" th:errors="*{productName}"></span>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" th:class="${#fields.hasErrors('price')} ? 'has-error'">
                                     <label >Giá sản phẩm</label>
                                     <input type="text" class="form-control" th:field="*{price}">
+                                    <span class="help-block" th:errors="*{price}"></span>
                                 </div>
 
                                     <div class="form-group">
@@ -57,7 +58,8 @@
                                     </div>
                                 <div class="form-group">
                                     <label >Ảnh sản phẩm</label>
-                                    <input type="file" class="form-control" th:field="*{fileImage}">
+                                    <input type="file" class="form-control" th:field="*{fileImage}" >
+                                    <span class="help-block" th:errors="*{fileImage}"></span>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>

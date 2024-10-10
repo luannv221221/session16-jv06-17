@@ -12,12 +12,13 @@ public class FileService {
     public String uploadImage(MultipartFile multipartFile){
         // xư l upload
         // String uploadPath = servletContext.getRealPath("/uploads");
-        String uploadPath = "D:\\Luannv\\JAVAFT-240617\\session16\\src\\main\\resources\\uploads\\images";
+        String uploadPath = "D:\\Luannv\\JAVAFT-240617\\session16\\src\\main\\webapp\\uploads";
         System.out.println(uploadPath);
         File file = new File(uploadPath);
         if(!file.exists()){
             file.mkdir();
         }
+        System.out.println(multipartFile);
         // lấy tên file
         String fileImage = multipartFile.getOriginalFilename();
         //System.out.println(fileImage);

@@ -100,7 +100,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
                         "classpath:assets/fonts/",
                         "classpath:assets/js/",
                         "classpath:assets/images/",
-                        "classpath:uploads/images/");
+                        "file:D:\\Luannv\\JAVAFT-240617\\session16\\src\\main\\webapp\\uploads\\");
     }
 
 }

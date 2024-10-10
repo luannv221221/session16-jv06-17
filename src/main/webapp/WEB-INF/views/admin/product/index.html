@@ -36,7 +36,7 @@
       <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-           <a th:href="@{'/admin/category/add'}" class="btn btn-success">Thêm mới</a>
+           <a th:href="@{'/admin/product/add'}" class="btn btn-success">Thêm mới</a>
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -69,7 +69,7 @@
                     <img alt="SEO" th:src="@{'/images/'+${product.image}}" width="69px" />
                   </td>
 
-                  <td th:text="${category.status ? 'Active':'Inactive'}"></td>
+                  <td th:text="${product.status ? 'Active':'Inactive'}"></td>
                   <td>
                   <a href="" class="btn btn-success">Sửa</a>
                   <a href="" class="btn btn-danger">Xóa</a>

@@ -1,11 +1,19 @@
 package com.ra.model.dto.product;
 
 import com.ra.model.entity.Category;
+import com.ra.validate.FileNotNull;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class ProductDTO {
+    @Size(min = 10,message = "Tối thiểu 10 ký tự")
     private String productName;
+    @Min(value = 1,message = "Giá không được nhỏ hơn 0")
     private double price;
+    @FileNotNull(message = "Chọn cái di")
     private MultipartFile fileImage;
     private boolean status;
     private Category category;
