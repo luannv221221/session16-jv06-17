@@ -22,13 +22,13 @@
     <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#" th:text="#{home}"> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/category" >Quản lý danh</a>
+                <a class="nav-link" href="/category" th:text="#{category}"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/category">Quản lý sản phẩm</a>
+                <a class="nav-link" href="/category" th:text="#{product}"></a>
             </li>
             <li class="nav-item dropdown" th:if="${session.userLogin !=null}">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId1" data-toggle="dropdown" aria-haspopup="true"
@@ -39,10 +39,19 @@
             </li>
             <li class="nav-item dropdown" th:unless="${session.userLogin !=null}">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Tai Khoan</a>
+                   aria-expanded="false" th:text="#{account}"></a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
                     <a class="dropdown-item" th:href="@{/register}">Đăng ký</a>
                     <a class="dropdown-item" th:href="@{/login}">Đăng Nhập</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownId11" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false" th:text="#{language}"></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownId11">
+                    <a class="dropdown-item" href="/?lang=jav">Nhật Nhẽo</a>
+                    <a class="dropdown-item" href="/?lang=vi">Đông Lào</a>
+                    <a class="dropdown-item" href="/?lang=en">Mẽo</a>
                 </div>
             </li>
         </ul>
